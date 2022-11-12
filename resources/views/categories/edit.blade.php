@@ -6,16 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Document</title>
+    <title>Create Ctaegory</title>
 </head>
 <body>
-
-
-   This Is Todo Application
-
-
-
-
+    <form action="{{ route('categories.update', $category->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+        <div class="">
+            <label for="name">Category Name</label>
+            <input type="text" name="name" value="{{ $category->name }}">
+            <p>{{ $errors->first('name') }}</p>
+        </div>
+        <div class="">
+            <label for="name">Status</label>
+            <select name="status" id="">
+                <option value="1"@if($category->status == 1) selected @endif>Active</option>
+                <option value="0"@if($category->status == 0) selected @endif>In-Active</option>
+            </select>
+            <p>{{ $errors->first('status') }}</p>
+        </div>
+        <div>
+            <button type="submit">Save</button>
+        </div>
+    </form>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
