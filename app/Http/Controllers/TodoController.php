@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Category;
 use App\Models\todo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class TodoController extends Controller
 {
@@ -16,7 +18,9 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $data['todos'] = todo::with('categories')->orderByDesc('created_at')->get();
+        //$data['todos'] = todo::with('categories')->orderByDesc('created_at')->get();
+
+        $data['todos'] = todo::with('categories')->where('user_id', Auth::user()->id)->orderByDesc('created_at')->get();
 
         return view('todo.index', $data);
     }
@@ -48,7 +52,8 @@ class TodoController extends Controller
                 'description' =>'nullable',
                 'status' => 'required',
                 'category_id' =>'required',
-                'image' => 'nullable|mimes:jpg,png,gif'
+                'image' => 'nullable|mimes:jpg,png,gif',
+                
 
             ]
         );
@@ -58,6 +63,7 @@ class TodoController extends Controller
             'description' => $request->description,
             'status' => $request->status,
             'category_id' => $request->category_id,
+            'user_id' => Auth::user()->id,
             
         ];
 
@@ -113,13 +119,17 @@ class TodoController extends Controller
      */
     public function update(Request $request, todo $todo)
     {
+        
+       
+
         $request->validate(
             [
                 'title' =>'required',
                 'description' =>'nullable',
                 'status' => 'required',
                 'category_id' =>'required',
-                'image' => 'nullable|mimes:jpg,png,gif'
+                'image' => 'nullable|mimes:jpg,png,gif',
+                'user_id' => 'required'
 
             ]
         );
@@ -129,6 +139,7 @@ class TodoController extends Controller
             'description' => $request->description,
             'status' => $request->status,
             'category_id' => $request->category_id,
+            'user_id' => Auth::user()->id,
             
         ];
 

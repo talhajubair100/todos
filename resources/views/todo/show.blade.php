@@ -9,6 +9,8 @@
     <title>Show Todos</title>
 </head>
 <body>
+
+    <p>Todo User: {{ $todo->users->name }}</p>
     
     <p>Todo Title: {{ $todo->title }}</p>
     <p>Todos Status: 
