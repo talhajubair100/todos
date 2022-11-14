@@ -32,7 +32,8 @@ class TodoController extends Controller
      */
     public function create()
     {
-        $data['categories'] = Category::pluck('name', 'id');
+        //$data['categories'] = Category::pluck('name', 'id');
+        $data['categories'] = Category::all()->where('user_id', Auth::user()->id);
 
         return view('todo.create', $data);
     }
