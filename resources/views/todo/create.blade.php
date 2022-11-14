@@ -26,9 +26,14 @@
         <div class="">
             <label for="name">Category</label>
 
-            <select name="category_id" id="">
+            {{-- <select name="category_id" id="">
                 @foreach($categories as $id => $value)
                 <option value="{{ $id }}">{{ $value }}</option>
+                @endforeach
+            </select> --}}
+            <select name="category_id" id="">
+                @foreach($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
         </div>
