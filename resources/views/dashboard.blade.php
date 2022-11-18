@@ -11,12 +11,17 @@
             <a href="{{ route('categories.index') }}" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                 Category
             </a>
+
+            <button type="button" class="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Green to Blue</button>
+
+
+
         </h2>
     </x-slot>
 
                        <!-- component -->
 <section class="antialiased bg-gray-100 text-gray-600 h-screen px-4">
-    <div class="flex flex-col justify-center h-full">
+    <div class="flex flex-col justify-center">
         <!-- Table -->
         <div class="w-full max-w-2xl mx-auto bg-white shadow-lg rounded-sm border border-gray-200">
             <header class="px-5 py-4 border-b border-gray-100">
